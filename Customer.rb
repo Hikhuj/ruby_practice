@@ -18,6 +18,7 @@ class Customer
         @email = email
     end
 
+    # String Interpolation example
     def hello
         if @id > 1
             puts "Hola #@first_name #@last_name."
