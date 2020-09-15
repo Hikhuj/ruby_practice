@@ -14,6 +14,15 @@ class Persona
 		@per_last_name = last_name
 		@per_phone = phone
 		@per_age = age
+		@per_age_status
+	end
+
+	def clean_name()
+		if @per_age >= 18
+			@per_age = "Bienvenido a la adultez, vaya trabaje"
+		else
+			@per_age = "Se salvó, vaya estudia"
+		end
 	end
 
 	def show_details()
@@ -43,6 +52,13 @@ class Persona
 				puts "Es menor de edad."
 			end
 		end
+	end
+
+	# Este es parte de Arboles de Decisiones llamado: modifier
+	# CODE if CONDITION
+	def evaluate_person_age_modifier()
+		$debug = 1
+		print "debug\n" if $debug
 	end
 
 	## Arreglos y como pueden recorrerse
@@ -79,6 +95,41 @@ class Persona
 		print "Edad actual para beber es igual a la nueva: \"#{$edad_minima_legal.equal?_new_legal_age}\""
 	end
 
+	# Statement: UNLESS
+	# Ejecuta el CODIGO si la CONDICION es FALSA.
+	def prueba_statement_unless()
+		unless @per_age >= 18
+			puts "UNLESS statement: La edad actual es mayor"
+		else
+			puts "UNLESS statement: La edad menor"
+		end
+	end
+
+	# Statement: UNLESS modifier
+	# CODE unless CONDITIONAL
+	def test_unless_statement_modifier()
+		$var = 1
+		print "1 -- Value is set\n" if $var
+		pritn "2 -- Value is set\n" unless $var
+
+		$var = false
+		print "3 -- Value is set\n" unless $var
+	end
+
+	# Statement: CASE
+	def age_status_case_statement_test()
+		age = @per_age
+		when age .. 15
+			puts "Puberto"
+		when 16 .. 18
+			puts "Casi adulto"
+		when 19 .. 50
+			puts "Adulto"
+		else
+			puts "Adulto mayor"
+		end
+	end
+
 end
 
 
@@ -96,18 +147,12 @@ per1.evaluate_person_age()
 per1.run_array()
 per1.run_hash()
 per1.run_intervals()
-per1.run_equal_questionMark
 puts ""
+per1.run_equal_questionMark()
 puts ""
-per2.show_details()
-per2.display_name()
-per2.display_min_legal_age()
-per2.total_no_of_people()
-per2.evaluate_person_age()
+per1.evaluate_person_age()
 puts ""
-puts ""
-per3.show_details()
-per3.display_name()
-per3.display_min_legal_age()
-per3.total_no_of_people()
-per3.evaluate_person_age()
+per1.evaluate_person_age_modifier()
+# per1.prueba_statement_unless()
+per2.prueba_statement_unless()
+per1.test_unless_statement_modifier()
